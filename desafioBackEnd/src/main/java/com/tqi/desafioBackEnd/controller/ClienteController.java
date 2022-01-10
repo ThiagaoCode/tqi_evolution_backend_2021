@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tqi.desafioBackEnd.model.Cliente;
+import com.tqi.desafioBackEnd.model.ClienteDTO;
 import com.tqi.desafioBackEnd.repository.ClienteRepository;
+import com.tqi.desafioBackEnd.service.ClienteService;
 
 
 
@@ -35,7 +37,7 @@ public class ClienteController {
 
 	@PostMapping("/salvar")
 	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Cliente novoCliente) {
-		Optional<Object> objetoCadastrado = servicos.cadastrarUsuario(novoCliente);
+		Optional<Object> objetoCadastrado = servicos.cadastrarCliente(novoCliente);
 
 		if (objetoCadastrado.isPresent()) {
 			return ResponseEntity.status(201).body(objetoCadastrado.get());
